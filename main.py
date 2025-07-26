@@ -220,20 +220,24 @@ def main():
     st.markdown('<h1 class="main-header">🦙 Groq-Powered RAG Chatbot</h1>', unsafe_allow_html=True)
     st.markdown("### A personal project to chat with documents using Groq and LLaMA3")
 
-    # Sidebar
+    ## Sidebar
     with st.sidebar:
         st.header("🔧 Configuration")
 
-        # API Key input
-        groq_api_key = st.text_input(
-            "Groq API Key",
-            type="password",
-            value=st.session_state.groq_api_key,
-            help="Get your API key from https://console.groq.com"
-        )
-
-        if groq_api_key:
-            st.session_state.groq_api_key = groq_api_key
+        # Check for secrets and load API key automatically
+        if 'GROQ_API_KEY' in st.secrets:
+            st.success("API key found in Secrets!", icon="✅")
+            st.session_state.groq_api_key = st.secrets['GROQ_API_KEY']
+        else:
+            # Fallback to manual input if secret is not found
+            groq_api_key = st.text_input(
+                "Groq API Key",
+                type="password",
+                value=st.session_state.groq_api_key,
+                help="Get your API key from https://console.groq.com"
+            )
+            if groq_api_key:
+                st.session_state.groq_api_key = groq_api_key
 
         st.divider()
 
