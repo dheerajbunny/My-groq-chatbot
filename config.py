@@ -2,7 +2,7 @@
 # Modify these settings to customize the chatbot behavior
 
 # Model Configuration
-MODEL_NAME = "llama3-70b-8192"
+MODEL_NAME = "llama-3.1-8b-instant"
 TEMPERATURE = 0.1
 MAX_TOKENS = 1024
 
