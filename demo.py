@@ -22,7 +22,7 @@ def test_groq_connection(api_key):
         llm = ChatGroq(
             temperature=0.1,
             groq_api_key=api_key,
-            model_name="llama3-70b-8192",
+            model_name="llama-3.1-8b-instant",
             max_tokens=100
         )
 
